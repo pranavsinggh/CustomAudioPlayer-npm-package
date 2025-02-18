@@ -1,18 +1,18 @@
 # CustomAudioPlayer
 
-![NPM Version](https://img.shields.io/npm/v/react-audio-pro-player)
+![NPM Version](https://img.shields.io/npm/v/react-pro-audio-player)
 ![License](https://img.shields.io/github/license/pranavsinggh/CustomAudioPlayer-npm-package)
-![Downloads](https://img.shields.io/npm/dt/react-audio-pro-player)
+![Downloads](https://img.shields.io/npm/dt/react-pro-audio-player)
 
 A customizable audio player component for React that allows for seamless audio playback with features like play/pause, volume control, loop, playback speed adjustment, and progress bar.
 
-## 🎬 Demo
+## 🎮 Demo
 
-![Demo GIF](https://github.com/user-attachments/assets/8e54d99c-71d2-4f0c-b2c2-37e750a4377e) 
+![Demo GIF](https://github.com/user-attachments/assets/8e54d99c-71d2-4f0c-b2c2-37e750a4377e)
 
 ---
 
-## 📖 Table of Contents
+## 📚 Table of Contents
 
 - [Features](#features)
 - [Installation](#installation)
@@ -28,13 +28,13 @@ A customizable audio player component for React that allows for seamless audio p
 
 ## 🚀 Features
 
-✅ **Play/Pause Controls** - Toggle between play and pause using icons.  
-✅ **Forward/Backward Controls** - Skip to the next or previous track in the playlist.  
-✅ **Volume Control** - Adjust volume or mute the audio with a slider and mute toggle.  
-✅ **Looping** - Toggle loop mode to replay the current track automatically.  
-✅ **Playback Speed** - Adjust playback speed from `0.5x` to `2x`.  
-✅ **Progress Bar** - Visualize and control the audio progress with a seekable range bar.  
-✅ **Responsive UI** - Works well across different devices with clean, minimal styling.  
+👉 **Play/Pause Controls** - Toggle between play and pause using icons.  
+👉 **Forward/Backward Controls** - Skip to the next or previous track in the playlist.  
+👉 **Volume Control** - Adjust volume or mute the audio with a slider and mute toggle.  
+👉 **Looping** - Toggle loop mode to replay the current track automatically.  
+👉 **Playback Speed** - Adjust playback speed from `0.5x` to `2x`.  
+👉 **Progress Bar** - Visualize and control the audio progress with a seekable range bar.  
+👉 **Responsive UI** - Works well across different devices with clean, minimal styling.  
 
 ---
 
@@ -43,13 +43,13 @@ A customizable audio player component for React that allows for seamless audio p
 You can install this package via npm or yarn:
 
 ```sh
-npm install react-audio-pro-player
+npm install react-pro-audio-player
 ```
 
 or
 
 ```sh
-yarn add react-audio-pro-player
+yarn add react-pro-audio-player
 ```
 
 ---
@@ -60,7 +60,7 @@ To use the `CustomAudioPlayer` in your project, import it and pass the necessary
 
 ```jsx
 import React, { useState } from 'react';
-import CustomAudioPlayer from 'react-audio-pro-player';
+import CustomAudioPlayer from 'react-pro-audio-player';
 
 const songs = [
   { id: 1, src: 'song1.mp3' },
@@ -115,7 +115,7 @@ export default App;
 
 ---
 
-## 🎨 Styling
+## 🎭 Styling
 
 You can customize the styles by overriding the default CSS classes in your own CSS files or by using a CSS-in-JS solution. The following classes are available:
 
@@ -133,7 +133,7 @@ You can customize the styles by overriding the default CSS classes in your own C
 To use the default styles, import the `CustomAudioPlayer.css` file:
 
 ```jsx
-import 'react-audio-pro-player/dist/CustomAudioPlayer.css';
+import 'react-pro-audio-player/dist/CustomAudioPlayer.css';
 ```
 
 ---
@@ -165,7 +165,7 @@ GitHub Repository: [CustomAudioPlayer](https://github.com/pranavsinggh/CustomAud
 
 ---
 
-## 📜 Changelog
+## 📝 Changelog
 
 ### v1.0.0
 - Initial release with core audio playback features.
@@ -174,7 +174,7 @@ GitHub Repository: [CustomAudioPlayer](https://github.com/pranavsinggh/CustomAud
 
 ---
 
-## 📄 License
+## 📝 License
 
 This package is open-source and available under the **MIT License**. Feel free to use and modify it as needed!
 
