@@ -133,7 +133,7 @@ You can customize the styles by overriding the default CSS classes in your own C
 To use the default styles, import the `CustomAudioPlayer.css` file:
 
 ```jsx
-import 'react-pro-audio-player/dist/CustomAudioPlayer.css';
+import 'react-pro-audio-player/src/CustomAudioPlayer.css';
 ```
 
 ---
