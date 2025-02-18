@@ -1,0 +1,68 @@
+.custom-audio-player {
+  width: 100%;  
+  background-color: #64748b;
+  color: white;
+  border-radius:0px 0px 8px 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+
+.progress-bar {
+  width: 100%;
+  margin: 0 12px;
+}
+
+.controls-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 54%;
+}
+
+.playback-controls {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 1.5rem;
+}
+
+.volume-speed-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 1rem;
+}
+
+.volume-slider {
+  width: 96px;
+}
+
+.playback-speed {
+  background: transparent;
+  color: white;
+  padding: 4px;
+  border-radius: 4px;
+  outline: none;
+}
+
+.playback-speed option {
+  color: black;
+}
