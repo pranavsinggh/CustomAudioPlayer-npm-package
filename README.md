@@ -151,6 +151,19 @@ You can enhance the audio player by adding more styles or modifying props. Examp
 }
 ```
 
+But need to import the `CustomAudioPlayer.css` file:
+
+```jsx
+import 'react-pro-audio-player/src/CustomAudioPlayer.css';
+``` 
+
+Before the global css file
+
+```jsx
+import "react-pro-audio-player/src/CustomAudioPlayer.css";
+import "./index.css";
+``` 
+
 ---
 
 ## 🤝 Contributing
