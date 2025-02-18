@@ -8,7 +8,7 @@ A customizable audio player component for React that allows for seamless audio p
 
 ## 🎮 Demo
 
-![Demo GIF](https://github.com/user-attachments/assets/8e54d99c-71d2-4f0c-b2c2-37e750a4377e)
+![Demo GIF](https://github.com/user-attachments/assets/5a166de1-93a8-4f47-8fce-ace9e1439eb2)
 
 ---
 
