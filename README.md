@@ -1,10 +1,10 @@
-# CustomAudioPlayer
+# Custom Audio Player
 
 ![NPM Version](https://img.shields.io/npm/v/react-pro-audio-player)
 ![License](https://img.shields.io/github/license/pranavsinggh/CustomAudioPlayer-npm-package)
 ![Downloads](https://img.shields.io/npm/dt/react-pro-audio-player)
 
-A customizable audio player component for React that allows for seamless audio playback with features like play/pause, volume control, loop, playback speed adjustment, and progress bar.
+A modern, **fully customizable** React **Audio Player** with support for **playlists, progress tracking, volume control, loop, playback speed adjustments**, and more.
 
 ## 🎮 Demo
 
@@ -12,14 +12,14 @@ A customizable audio player component for React that allows for seamless audio p
 
 ---
 
-## 📚 Table of Contents
-
+## 📜 Table of Contents
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
+  - [Hybrid Component](#hybrid-component)
+  - [Uncontrolled Component](#uncontrolled-component)
 - [Props](#props)
-- [Styling](#styling)
-- [Customization](#customization)
+- [Styling & Customization](#styling--customization)
 - [Contributing](#contributing)
 - [Changelog](#changelog)
 - [License](#license)
@@ -27,14 +27,13 @@ A customizable audio player component for React that allows for seamless audio p
 ---
 
 ## 🚀 Features
-
-👉 **Play/Pause Controls** - Toggle between play and pause using icons.  
-👉 **Forward/Backward Controls** - Skip to the next or previous track in the playlist.  
-👉 **Volume Control** - Adjust volume or mute the audio with a slider and mute toggle.  
-👉 **Looping** - Toggle loop mode to replay the current track automatically.  
-👉 **Playback Speed** - Adjust playback speed from `0.5x` to `2x`.  
-👉 **Progress Bar** - Visualize and control the audio progress with a seekable range bar.  
-👉 **Responsive UI** - Works well across different devices with clean, minimal styling.  
+✅ Fully customizable UI with Tailwind CSS support  
+✅ Supports **playlist playback**  
+✅ **Hybrid & Uncontrolled** component usage  
+✅ **Loop, volume, and playback speed controls**  
+✅ Supports **click-to-play** song selection  
+✅ Smooth **progress tracking and seek**  
+✅ Lightweight and optimized for performance  
 
 ---
 
@@ -54,46 +53,64 @@ yarn add react-pro-audio-player
 
 ---
 
-## 🔧 Usage
+## 📖 Usage
 
-To use the `CustomAudioPlayer` in your project, import it and pass the necessary props:
+### 1️⃣ Hybrid Component
+A **hybrid component** gives you **full control** over the player's state, such as `isPlaying` and `currentSongIndex`, allowing external management of playback.
 
 ```jsx
-import React, { useState } from 'react';
-import CustomAudioPlayer from 'react-pro-audio-player';
+import React, { useState } from "react";
+import CustomAudioPlayer from "@your-username/custom-audio-player";
 
-const songs = [
-  { id: 1, src: 'song1.mp3' },
-  { id: 2, src: 'song2.mp3' },
-  { id: 3, src: 'song3.mp3' },
+const songsList = [
+  { id: 1, src: "./assets/song1.mp3", name: "Song One" },
+  { id: 2, src: "./assets/song2.mp3", name: "Song Two" },
+  { id: 3, src: "./assets/song3.mp3", name: "Song Three" },
 ];
 
 const App = () => {
-  const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const [songs, setSongs] = useState(songsList);
   const [isPlaying, setIsPlaying] = useState(false);
-
-  const handlePlayPause = () => {
-    setIsPlaying(!isPlaying);
-  };
-
-  const handlePlay = (index, allSongs) => {
-    setCurrentSongIndex(index);
-    setIsPlaying(true);
-  };
+  const [currentSongIndex, setCurrentSongIndex] = useState(null);
 
   return (
-    <div>
-      <CustomAudioPlayer
-        audioSrc={songs[currentSongIndex].src}
-        isPlaying={isPlaying}
-        onPlayPause={handlePlayPause}
-        handlePlay={handlePlay}
-        length={songs.length}
-        index={currentSongIndex}
-        songs={songs}
-      />
-    </div>
+    <>
+      <div>
+        {songs.map((song, index) => (
+          <div key={song.id} onClick={() => setCurrentSongIndex(index)}>
+            {song.name}
+          </div>
+        ))}
+      </div>
+      {currentSongIndex !== null && (
+        <CustomAudioPlayer
+          songs={songs}
+          isPlaying={isPlaying}
+          currentSongIndex={currentSongIndex}
+          onPlayPauseChange={setIsPlaying}
+          onSongChange={setCurrentSongIndex}
+        />
+      )}
+    </>
   );
+};
+
+export default App;
+```
+
+### 2️⃣ Uncontrolled Component
+If you want **default behavior** with minimal setup, use the **uncontrolled component**. This does not require managing state externally.
+
+```jsx
+import CustomAudioPlayer from "@your-username/custom-audio-player";
+
+const songsList = [
+  { id: 1, src: "./assets/song1.mp3", name: "Song One" },
+  { id: 2, src: "./assets/song2.mp3", name: "Song Two" },
+];
+
+const App = () => {
+  return <CustomAudioPlayer songs={songsList} />;
 };
 
 export default App;
@@ -101,40 +118,35 @@ export default App;
 
 ---
 
-## ⚙️ Props
+## 🎛️ Props
 
-| Prop Name    | Type     | Required | Description |
-|-------------|---------|----------|-------------|
-| `audioSrc`  | string  | ✅        | The source URL of the current audio track. |
-| `isPlaying` | boolean | ✅        | Indicates whether the audio is playing or paused. |
-| `onPlayPause` | function | ✅        | Callback function to handle play/pause toggle. |
-| `handlePlay` | function | ✅        | Function to handle playing a specific song, required for forward/backward navigation. |
-| `length`    | number  | ✅        | Total number of songs in the playlist. |
-| `index`     | number  | ✅        | Index of the current song in the playlist. |
-| `songs`     | array   | ✅        | Array of song objects containing `id` and `src`. |
+| Prop                 | Type             | Required | Description |
+|----------------------|----------------|----------|-------------|
+| `songs`             | `Array`         | ✅ Yes  | List of songs with `{ id, src, name }` objects. |
+| `isPlaying`         | `boolean`       | ❌ No   | Controls playback state (Hybrid mode only). |
+| `currentSongIndex`  | `number`        | ❌ No   | Index of the currently playing song (Hybrid mode only). |
+| `onPlayPauseChange` | `function`      | ❌ No   | Callback function to toggle play/pause (Hybrid mode only). |
+| `onSongChange`      | `function`      | ❌ No   | Callback function when song changes (Hybrid mode only). |
+
+📝 **Note:**
+- Props `isPlaying`, `currentSongIndex`, `onPlayPauseChange`, and `onSongChange` should be used **together** in **Hybrid mode**.
 
 ---
 
-## 🎭 Styling
+## 🎨 Styling & Customization
 
-You can customize the styles by overriding the default CSS classes in your own CSS files or by using a CSS-in-JS solution. The following classes are available:
+You can customize the player with **CSS classes**. The default styles use Tailwind-like classes:
 
-```css
-.custom-audio-player {}
-.progress-container {}
-.progress-bar {}
-.controls-container {}
-.playback-controls {}
-.volume-speed-controls {}
-.volume-slider {}
-.playback-speed {}
-```
-
-To use the default styles, import the `CustomAudioPlayer.css` file:
-
-```jsx
-import 'react-pro-audio-player/src/CustomAudioPlayer.css';
-```
+| Class Name            | Description |
+|----------------------|-------------|
+| `.custom-audio-player` | Main player container |
+| `.player-header`      | Header containing song details |
+| `.audio-player`       | Inner audio player container |
+| `.progress-bar`       | Custom progress bar styling |
+| `.controls-wrapper`   | Wrapper for playback controls |
+| `.playback-btn`       | Button for play, pause, next, and previous |
+| `.volume-slider`      | Volume control styling |
+| `.playback-speed`     | Dropdown for speed selection |
 
 ---
 
@@ -178,7 +190,13 @@ GitHub Repository: [CustomAudioPlayer](https://github.com/pranavsinggh/CustomAud
 
 ---
 
-## 📝 Changelog
+## 📌 Changelog
+### v2.0.0 - (Latest Release)
+- 🎵 **Added Hybrid & Uncontrolled component support**
+- 🎚 **Improved progress tracking and seek function**
+- 🔄 **Loop & playback speed controls** added
+- 🎨 **Revamped UI with Tailwind CSS support**
+- 🛠 **Optimized state management for better performance**
 
 ### v1.0.0
 - Initial release with core audio playback features.
@@ -190,4 +208,8 @@ GitHub Repository: [CustomAudioPlayer](https://github.com/pranavsinggh/CustomAud
 ## 📝 License
 
 This package is open-source and available under the **MIT License**. Feel free to use and modify it as needed!
+
+---
+
+🚀 **Enjoy building with Custom Audio Player!** 🎧
 

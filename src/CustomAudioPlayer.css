@@ -1,68 +1,206 @@
+/* Main container */
 .custom-audio-player {
-  width: 100%;  
-  background-color: #64748b;
-  color: white;
-  border-radius:0px 0px 8px 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  height: 100px;
+  width: 100%;
+  color: #f3f4f6;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  transition: background 0.3s ease;
+}
+
+/* Header with song details and cancel button */
+.player-header {
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #374151, #4b5563);
+}
+
+.song-details {
+  flex-grow: 1;
+  padding: 4px 8px;
+
+  border-radius: 4px;
+}
+
+.song-title {
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: italic;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Audio player inner container */
+.audio-player {
+  background: linear-gradient(135deg, #4b5563, #64748b);
+  padding: 12px 16px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 10px;
+  transition: background 0.3s ease;
 }
 
-.progress-container {
+.audio-player:hover {
+background: linear-gradient(135deg, #4b5563, #6b7280);
+}
+
+/* Progress bar wrapper */
+.progress-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 1rem;
+  gap: 8px;
 }
 
+.time {
+  font-size: 0.85rem;
+  min-width: 36px;
+  text-align: center;
+}
+
+/* Progress bar styling */
 .progress-bar {
-  width: 100%;
-  margin: 0 12px;
+  flex-grow: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: #d1d5db; /* fallback background */
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
 
-.controls-container {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 12px;
+.progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  border: 2px solid #4b5563;
 }
 
-.controls {
+.progress-bar::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  border: 2px solid #4b5563;
+}
+
+/* Controls wrapper */
+.controls-wrapper {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 54%;
 }
 
-.playback-controls {
+/* Center controls for playback buttons */
+.center-controls {
+  width: 100%;
   display: flex;
+  gap: 16px;
+  align-items: center;
   justify-content: center;
-  gap: 24px;
-  font-size: 1.5rem;
+  flex: 1;
 }
 
-.volume-speed-controls {
+.playback-btn {
+  background: none;
+  border: none;
+  color: #f3f4f6;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 4px;
+  transition: transform 0.2s ease;
+}
+
+.playback-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Right aligned controls */
+.right-controls {
+  position: absolute;
+  right: 12px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  font-size: 1rem;
+  gap: 12px;
 }
 
-.volume-slider {
-  width: 96px;
-}
-
-.playback-speed {
-  background: transparent;
-  color: white;
+.btn {
+  background: none;
+  border: none;
+  color: #f3f4f6;
+  cursor: pointer;
   padding: 4px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+/* Specific buttons */
+.loop-btn,
+.mute-btn,
+.cancel-btn {
+  font-size: 1.1rem;
+}
+
+/* Volume slider styling */
+.volume-slider {
+  width: 80px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: #d1d5db;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  border: 2px solid #4b5563;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  border: 2px solid #4b5563;
+}
+
+/* Playback speed selector */
+.playback-speed {
+  background: rgba(255, 255, 255, 0.15);
+  color: #f3f4f6;
+  padding: 2px 6px;
   border-radius: 4px;
+  border: none;
   outline: none;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.playback-speed:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .playback-speed option {
-  color: black;
+  color: #374151;
 }

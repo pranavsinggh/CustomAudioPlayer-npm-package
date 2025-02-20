@@ -1,6 +1,6 @@
 {
   "name": "react-pro-audio-player",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "A React component for playing collection of audio files with controls for forward, backward, play, pause, loop, sound control, and playback speed.",
   "main": "index.js",
   "scripts": {
