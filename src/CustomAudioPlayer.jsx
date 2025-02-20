@@ -24,6 +24,10 @@ const CustomAudioPlayer = ({
   // Song index state
   currentSongIndex: controlledSongIndex,
   onSongChange, // callback when the song index changes
+
+  // Dynamic keys
+  songUrlKey = "src",
+  songNameKey = "name",
 }) => {
   // Use controlled values if provided; otherwise, use internal state.
   const [internalSongs, setInternalSongs] = useState(initialSongs);
@@ -51,7 +55,7 @@ const CustomAudioPlayer = ({
   useEffect(() => {
     if (songs.length === 0) return;
     const audio = audioRef.current;
-    audio.src = songs[currentSongIndex]?.src;
+    audio.src = songs[currentSongIndex]?.[songUrlKey];
     audio.load();
 
     const updateTime = () => setCurrentTime(audio.currentTime);
@@ -176,7 +180,9 @@ const CustomAudioPlayer = ({
     <section className="custom-audio-player">
       <div className="player-header">
         <div className="song-details">
-          <span className="song-title">{songs[currentSongIndex]?.name}</span>
+          <span className="song-title">
+            {songs[currentSongIndex]?.[songNameKey]}
+          </span>
         </div>
         <button
           onClick={handleCancel}
