@@ -63,7 +63,7 @@ A **hybrid component** gives you **full control** over the player's state, such 
 
 ```jsx
 import React, { useState } from "react";
-import CustomAudioPlayer from "@your-username/custom-audio-player";
+import CustomAudioPlayer from "react-pro-audio-player";
 
 const songsList = [
   { id: 1, url: "./assets/song1.mp3", title: "Song One" },
@@ -108,7 +108,7 @@ export default App;
 If you want **default behavior** with minimal setup, use the **uncontrolled component**. This does not require managing state externally.
 
 ```jsx
-import CustomAudioPlayer from "@your-username/custom-audio-player";
+import CustomAudioPlayer from "react-pro-audio-player";
 
 const songsList = [
   { id: 1, url: "./assets/song1.mp3", title: "Song One" },
