@@ -8,7 +8,7 @@ A modern, **fully customizable** React **Audio Player** with support for **playl
 
 ## 🎮 Demo
 
-![Demo GIF](https://github.com/user-attachments/assets/d0f5e4ef-039c-497d-adc8-eeef0c22a1bc)
+![Demo GIF](https://github.com/user-attachments/assets/c9218433-5669-4313-bff9-47dec650517c)
 
 ---
 
