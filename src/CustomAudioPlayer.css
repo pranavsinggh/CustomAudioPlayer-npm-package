@@ -2,51 +2,20 @@
 .custom-audio-player {
   width: 100%;
   color: #f3f4f6;
-  border-radius: 0 0 8px 8px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   transition: background 0.3s ease;
+  position: relative;
 }
-
-/* Header with song details and cancel button */
-.player-header {
-  border-radius: 8px 8px 0 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 12px;
-  background: linear-gradient(135deg, #374151, #4b5563);
-}
-
-.song-details {
-  flex-grow: 1;
-  padding: 4px 8px;
-
-  border-radius: 4px;
-}
-
-.song-title {
-  font-size: 1rem;
-  font-weight: 500;
-  font-style: italic;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
 /* Audio player inner container */
 .audio-player {
-  background: linear-gradient(135deg, #4b5563, #64748b);
-  padding: 12px 16px;
+  width: 100%;
+  background: #111827;
+  padding: 16px 16px 12px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
   transition: background 0.3s ease;
-}
-
-.audio-player:hover {
-background: linear-gradient(135deg, #4b5563, #6b7280);
 }
 
 /* Progress bar wrapper */
@@ -61,6 +30,7 @@ background: linear-gradient(135deg, #4b5563, #6b7280);
   font-size: 0.85rem;
   min-width: 36px;
   text-align: center;
+  color:#d1d5db
 }
 
 /* Progress bar styling */
@@ -78,58 +48,89 @@ background: linear-gradient(135deg, #4b5563, #6b7280);
 .progress-bar::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: #f3f4f6;
-  border: 2px solid #4b5563;
+  background: #e11d48;
 }
 
 .progress-bar::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: #f3f4f6;
-  border: 2px solid #4b5563;
+  background: #e11d48;
 }
 
 /* Controls wrapper */
 .controls-wrapper {
-  position: relative;
+  padding: 4px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+/* Left controls */
+.left-controls{
+  width:35%
+}
+
+.song-details {
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.song-thumbnail img {
+  width: 72px;
+  border-radius: 6px;
+  height: 56px;
+}
+
+.song-detail{
+  display: flex;
+  flex-direction: column;
+  gap:2vh
+}
+
+.song-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.song-singer{
+  font-size: 0.875rem;
+  color:#d1d5db;
+  font-weight: 400;
+}
 
 /* Center controls for playback buttons */
 .center-controls {
-  width: 100%;
+  width: 33%;
   display: flex;
   gap: 16px;
   align-items: center;
   justify-content: center;
-  flex: 1;
 }
 
 .playback-btn {
   background: none;
   border: none;
   color: #f3f4f6;
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   cursor: pointer;
   padding: 4px;
   transition: transform 0.2s ease;
 }
-
-.playback-btn:hover {
-  transform: scale(1.1);
+.play-pause-btn{
+  font-size: 1.875rem;
 }
 
 /* Right aligned controls */
 .right-controls {
-  position: absolute;
-  right: 12px;
+  width: 33%;
   display: flex;
+  justify-content: end;
   align-items: center;
   gap: 12px;
 }
@@ -143,8 +144,10 @@ background: linear-gradient(135deg, #4b5563, #6b7280);
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.btn:hover {
-  transform: scale(1.1);
+.cancel-btn{
+  position: absolute;
+  top: 2px;
+  right: 2px;
 }
 
 /* Specific buttons */
@@ -153,14 +156,18 @@ background: linear-gradient(135deg, #4b5563, #6b7280);
 .cancel-btn {
   font-size: 1.1rem;
 }
+.cancel-btn:hover{
+  color:#e11d48
+
+}
 
 /* Volume slider styling */
 .volume-slider {
   width: 80px;
   -webkit-appearance: none;
   appearance: none;
-  height: 4px;
-  border-radius: 2px;
+  height: 6px;
+  border-radius: 5px;
   background: #d1d5db;
   cursor: pointer;
   transition: background 0.2s ease;
@@ -169,16 +176,16 @@ background: linear-gradient(135deg, #4b5563, #6b7280);
 .volume-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: #f3f4f6;
   border: 2px solid #4b5563;
 }
 
 .volume-slider::-moz-range-thumb {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: #f3f4f6;
   border: 2px solid #4b5563;

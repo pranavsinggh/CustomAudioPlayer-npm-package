@@ -66,9 +66,9 @@ import React, { useState } from "react";
 import CustomAudioPlayer from "react-pro-audio-player";
 
 const songsList = [
-  { id: 1, url: "./assets/song1.mp3", title: "Song One" },
-  { id: 2, url: "./assets/song2.mp3", title: "Song Two" },
-  { id: 3, url: "./assets/song3.mp3", title: "Song Three" },
+  { id: 1, url: "./assets/song1.mp3", title: "Song One", thumbnail:"Song Image" , singer:"Song Singer"},
+  { id: 2, url: "./assets/song2.mp3", title: "Song Two", thumbnail:"Song Image" , singer:"Song Singer" },
+  { id: 3, url: "./assets/song3.mp3", title: "Song Three", thumbnail:"Song Image" , singer:"Song Singer" },
 ];
 
 const App = () => {
@@ -94,6 +94,8 @@ const App = () => {
           onSongChange={setCurrentSongIndex}
           songUrlKey="url"
           songNameKey="title"
+          songThumbnailKey="thumbnail" 
+          songSingerKey="singer"
         />
       )}
     </>
@@ -111,14 +113,14 @@ If you want **default behavior** with minimal setup, use the **uncontrolled comp
 import CustomAudioPlayer from "react-pro-audio-player";
 
 const songsList = [
-  { id: 1, url: "./assets/song1.mp3", title: "Song One" },
-  { id: 2, url: "./assets/song2.mp3", title: "Song Two" },
-  { id: 3, url: "./assets/song3.mp3", title: "Song Three" },
+  { id: 1, url: "./assets/song1.mp3", title: "Song One" , thumbnail:"Song Image" , singer:"Song Singer" },
+  { id: 2, url: "./assets/song2.mp3", title: "Song Two" , thumbnail:"Song Image" , singer:"Song Singer"},
+  { id: 3, url: "./assets/song3.mp3", title: "Song Three" , thumbnail:"Song Image" , singer:"Song Singer" },
 ];
 
 const App = () => {
   return (
-    <CustomAudioPlayer songs={songsList} songUrlKey="url" songNameKey="title" />
+    <CustomAudioPlayer songs={songsList} songUrlKey="url" songNameKey="title" songThumbnailKey="thumbnail" songSingerKey="singer" />
   );
 };
 
@@ -129,15 +131,17 @@ export default App;
 
 ## 🎛️ Props
 
-| Prop                | Type       | Required | Description                                                |
-| ------------------- | ---------- | -------- | ---------------------------------------------------------- |
-| `songs`             | `Array`    | ✅ Yes   | List of songs with `{ id, url, title }` objects.           |
-| `songUrlKey`        | `string`   | ✅ Yes   | The key name in the song object that stores the song URL   |
-| `songNameKey`       | `string`   | ✅ Yes   | The key name in the song object that stores the song name  |
-| `isPlaying`         | `boolean`  | ❌ No    | Controls playback state (Hybrid mode only).                |
-| `currentSongIndex`  | `number`   | ❌ No    | Index of the currently playing song (Hybrid mode only).    |
-| `onPlayPauseChange` | `function` | ❌ No    | Callback function to toggle play/pause (Hybrid mode only). |
-| `onSongChange`      | `function` | ❌ No    | Callback function when song changes (Hybrid mode only).    |
+| Prop                     | Type       | Required | Description                                                   |
+| ------------------------ | ---------- | -------- | ------------------------------------------------------------- |
+| `songs`                  | `Array`    | ✅ Yes   | List of songs with `{ id, url, title }` objects.              |
+| `songUrlKey`             | `string`   | ✅ Yes   | The key name in the song object that stores the song URL      |
+| `songNameKey`            | `string`   | ❌ No    | The key name in the song object that stores the song name     |
+| `songThumbnailKey`       | `string`   | ❌ No    | The key name in the song object that stores the song image    |
+| `songSingerKey`          | `string`   | ❌ No    | The key name in the song object that stores the song singers  |
+| `isPlaying`              | `boolean`  | ❌ No    | Controls playback state (Hybrid mode only).                   |
+| `currentSongIndex`       | `number`   | ❌ No    | Index of the currently playing song (Hybrid mode only).       |
+| `onPlayPauseChange`      | `function` | ❌ No    | Callback function to toggle play/pause (Hybrid mode only).    |
+| `onSongChange`           | `function` | ❌ No    | Callback function when song changes (Hybrid mode only).       |
 
 📝 **Note:**
 
@@ -152,7 +156,6 @@ You can customize the player with **CSS classes**. The default styles use Tailwi
 | Class Name             | Description                                |
 | ---------------------- | ------------------------------------------ |
 | `.custom-audio-player` | Main player container                      |
-| `.player-header`       | Header containing song details             |
 | `.audio-player`        | Inner audio player container               |
 | `.progress-bar`        | Custom progress bar styling                |
 | `.controls-wrapper`    | Wrapper for playback controls              |
@@ -205,7 +208,12 @@ GitHub Repository: [CustomAudioPlayer](https://github.com/pranavsinggh/CustomAud
 
 ## 📌 Changelog
 
-### v2.0.0 - (Latest Release)
+### v3.0.0 - (Latest Release)
+
+- 🎨 **Revamped UI with Tailwind CSS support**
+- 🎵 **Added songs details to be displayed**
+
+### v2.0.0 - 
 
 - 🎵 **Added Hybrid & Uncontrolled component support**
 - 🎚 **Improved progress tracking and seek function**
@@ -215,9 +223,9 @@ GitHub Repository: [CustomAudioPlayer](https://github.com/pranavsinggh/CustomAud
 
 ### v1.0.0
 
-- Initial release with core audio playback features.
-- Play/Pause, Forward/Backward, Volume Control, Loop, and Playback Speed.
-- Responsive UI.
+- **Initial release with core audio playback features.**
+- **Play/Pause, Forward/Backward, Volume Control, Loop, and Playback Speed.**
+- **Responsive UI.**
 
 ---
 

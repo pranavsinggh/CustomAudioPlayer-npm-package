@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import {
   FaBackward,
   FaForward,
-  FaPause,
-  FaPlay,
   FaVolumeUp,
   FaVolumeMute,
   FaRedo,
+  FaPauseCircle,
+  FaPlayCircle,
 } from "react-icons/fa";
 import { ImLoop2 } from "react-icons/im";
 import { MdCancel } from "react-icons/md";
@@ -28,6 +28,8 @@ const CustomAudioPlayer = ({
   // Dynamic keys
   songUrlKey = "src",
   songNameKey = "name",
+  songThumbnailKey = "thumbnail",
+  songSingerKey = "singer",
 }) => {
   // Use controlled values if provided; otherwise, use internal state.
   const [internalSongs, setInternalSongs] = useState(initialSongs);
@@ -167,53 +169,36 @@ const CustomAudioPlayer = ({
   const progressPercent =
     duration && currentTime ? (currentTime / duration) * 100 : 0;
   const progressBarStyle = {
-    background: `linear-gradient(to right, blue ${progressPercent}%, #d1d5db ${progressPercent}%)`,
+    background: `linear-gradient(to right, #e11d48 ${progressPercent}%, #d1d5db ${progressPercent}%)`,
   };
 
   // Calculate volume percentage for the volume slider.
-  const volumePercent = volume * 100;
+  const volumePercent = isMuted ? 0 : volume * 100;
   const volumeSliderStyle = {
-    background: `linear-gradient(to right, blue ${volumePercent}%, #d1d5db ${volumePercent}%)`,
+    background: `linear-gradient(to right, #e11d48 ${volumePercent}%, #d1d5db ${volumePercent}%)`,
   };
 
   return (
     <section className="custom-audio-player">
-      <div className="player-header">
-        <div className="song-details">
-          <span className="song-title">
-            {songs[currentSongIndex]?.[songNameKey]}
-          </span>
-        </div>
-        <button
-          onClick={handleCancel}
-          aria-label="Cancel playback"
-          className="btn cancel-btn"
-        >
-          <MdCancel />
-        </button>
-      </div>
       <div className="audio-player">
-        <div className="progress-wrapper">
-          <span className="time">
-            {Math.floor(currentTime / 60)}:
-            {String(Math.floor(currentTime % 60)).padStart(2, "0")}
-          </span>
-          <input
-            type="range"
-            className="progress-bar"
-            min="0"
-            max={duration || 1}
-            value={currentTime}
-            onChange={handleSeekChange}
-            aria-label="Seek slider"
-            style={progressBarStyle}
-          />
-          <span className="time">
-            {Math.floor(duration / 60)}:
-            {String(Math.floor(duration % 60)).padStart(2, "0")}
-          </span>
-        </div>
         <div className="controls-wrapper">
+          <div className="left-controls">
+            <div className="song-details">
+              <span className="song-thumbnail">
+                {songs[currentSongIndex]?.[songThumbnailKey] && (
+                  <img src={songs[currentSongIndex]?.[songThumbnailKey]} />
+                )}
+              </span>
+              <div className="song-detail">
+                <span className="song-title">
+                  {songs[currentSongIndex]?.[songNameKey]}
+                </span>
+                <span className="song-singer">
+                  {songs[currentSongIndex]?.[songSingerKey]}
+                </span>
+              </div>
+            </div>
+          </div>
           <div className="center-controls">
             <button
               onClick={handleBackward}
@@ -225,9 +210,9 @@ const CustomAudioPlayer = ({
             <button
               onClick={togglePlayPause}
               aria-label={isPlaying ? "Pause" : "Play"}
-              className="btn playback-btn"
+              className="btn playback-btn play-pause-btn"
             >
-              {isPlaying ? <FaPause /> : <FaPlay />}
+              {isPlaying ? <FaPauseCircle /> : <FaPlayCircle />}
             </button>
             <button
               onClick={handleForward}
@@ -274,7 +259,34 @@ const CustomAudioPlayer = ({
               <option value="1.5">1.5x</option>
               <option value="2">2x</option>
             </select>
+            <button
+              onClick={handleCancel}
+              aria-label="Cancel playback"
+              className="btn cancel-btn"
+            >
+              <MdCancel />
+            </button>
           </div>
+        </div>
+        <div className="progress-wrapper">
+          <span className="time">
+            {Math.floor(currentTime / 60)}:
+            {String(Math.floor(currentTime % 60)).padStart(2, "0")}
+          </span>
+          <input
+            type="range"
+            className="progress-bar"
+            min="0"
+            max={duration || 1}
+            value={currentTime}
+            onChange={handleSeekChange}
+            aria-label="Seek slider"
+            style={progressBarStyle}
+          />
+          <span className="time">
+            {Math.floor(duration / 60)}:
+            {String(Math.floor(duration % 60)).padStart(2, "0")}
+          </span>
         </div>
       </div>
     </section>
